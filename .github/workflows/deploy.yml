@@ -1,40 +1,41 @@
 name: Deploy to GitHub Pages
 
-on:
+on: 
   push:
     branches:
-      - main
-
+      - main 
+#Q：为啥要这样的语法来写呢？
+# 以及是如何规定的呢？
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
+concurrency: # 并发设置
   group: "pages"
   cancel-in-progress: false
 
-jobs:
+jobs: # 构建任务
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # 检出代码
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '20' # 设置 Node.js 版本
+          cache: 'npm' # 这一步是安装node.js 
 
-      - name: Install dependencies
+      - name: Install dependencies # 然后是安装项目的依赖
         run: npm install
 
-      - name: Build
+      - name: Build # 然后是构建项目
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact # 然后是上传项目构建产物
+        uses: actions/upload-pages-artifact@v3 # 把dist 文件夹打包上传，专门提供给下一个任务使用
         with:
           path: ./dist
 
@@ -43,7 +44,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build # 依赖build 任务完成
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
