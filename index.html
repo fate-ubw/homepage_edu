@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- 字符编码：告诉浏览器使用 UTF-8 编码（支持中文等多语言） -->
+    <meta charset="UTF-8" />
+    <!-- 网站图标（favicon）配置
+         rel="icon"：表示这是一个图标链接（relation = icon）
+         type="image/svg+xml"：图标的文件类型是 SVG 格式
+         href="/vite.svg"：图标文件的路径
+         
+         路径解释：
+         - "/vite.svg" 是相对于网站根目录的路径
+         - Vite 会自动将 public/ 文件夹视为网站根目录
+         - 所以 public/vite.svg 在浏览器中访问时就是 /vite.svg
+    -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- 响应式设计配置
+         viewport：视口（浏览器可视区域）
+         width=device-width：宽度等于设备宽度
+         initial-scale=1.0：初始缩放比例为 1（不缩放） 修改了这个项目好像也没啥太大差别诶
+         作用：让网站在手机、平板上正常显示
+         这个素材可以直接通过 ip 和对应的相对路径访问到这个路径。 wget http://localhost:5174/vite.svg 
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=5.0" />
+    
+    <!-- 网页标题（显示在浏览器标签页上） -->
+    <title>webnavigator_projectpage</title>
+  </head>
+  <body>
+    <!-- Vue 应用挂载点：Vue 会把组件渲染到这个 div 里 -->
+    <div id="app"></div>
+    
+    <!-- JavaScript 入口文件
+         type="module"：使用 ES6 模块语法（支持 import/export）
+         src="/src/main.js"：入口文件路径（Vite 会处理）
+    -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
